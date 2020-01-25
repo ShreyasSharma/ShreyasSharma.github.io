@@ -398,7 +398,14 @@ p { margin: 10px 0; }
 
 
 /* Landscape Phone */
-@media all and (min-width: 400px) {}
+@media all and (min-width: 400px) {
+
+	#top
+{
+
+	padding-left:0px;
+}
+}
 
 /* Tablet Portrait */
 @media all and (min-width: 700px) {
@@ -576,8 +583,8 @@ p { margin: 10px 0; }
 	}
 
 	.depth-5 {
-		right: -25%;
-		top: 3%;
+		right: -5%;
+		top: 10%;
 	}
 
 	.depth-4 {
@@ -636,8 +643,8 @@ p { margin: 10px 0; }
 /* Web */
 @media all and (min-width: 900px) {
 	.depth-5 {
-		right: -25%;
-		top: 3%;
+		right: -5%;
+		top: 10%;
 	}
 
 	.depth-4 {
@@ -703,7 +710,7 @@ p { margin: 10px 0; }
 	}
 
 	.depth-5 {
-		right: 0;
+		right: -5%;
 		top: 10%;
 		-webkit-animation: wave 9s 0.1s infinite linear;
 		-moz-animation: wave 9s 0.1s infinite linear;
@@ -775,8 +782,10 @@ p { margin: 10px 0; }
 	.depth-1.flake1 {
 		display: block;
 		position: absolute;
+
 		left: 30%;
-		bottom: 20%;
+		bottom: 10%;
+		font-size: 15px;
 	}
 
 	.depth-1.flake2 { 
@@ -806,8 +815,8 @@ p { margin: 10px 0; }
 
 @media all and (min-width: 1400px) {
 	.depth-5 {
-		right: -10%;
-		top: -5%;
+		right: -5%;
+		top: 10%;
 	}
 
 	.depth-4 {
@@ -854,6 +863,7 @@ p { margin: 10px 0; }
 		display: block;
 		position: absolute;
 		left: 30%;
+		font-size: 15px;
 		bottom: 30%;
 	}
 
@@ -937,6 +947,7 @@ p { margin: 10px 0; }
 		position: absolute;
 		left: 30%;
 		bottom: 30%;
+		font-size: 15px;
 	}
 
 	.depth-1.flake2 { 
@@ -1133,6 +1144,11 @@ width: 100%;
 		right: 40%;
 		top: 25%;
 	}
+#top
+{
+
+	padding-left: 30%;
+}
 }
 
 
