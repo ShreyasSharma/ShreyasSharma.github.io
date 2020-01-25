@@ -12,12 +12,51 @@
 <body>
 <script src="https://smtpjs.com/v3/smtp.js"></script>  
 <script type="text/javascript">
-function register()
+
+
+function openForm() {
+
+  document.getElementById("myForm1").style.display = "none";
+
+  document.getElementById("buttons").style.display = "none";
+
+  document.getElementById("myForm").style.display = "block";
+
+  document.getElementById("eventbg").style.height="auto";
+}
+
+function closeForm() {
+
+  document.getElementById("buttons").style.display = "block";
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("eventbg").style.height="100%";
+
+}
+
+function openForm1() {
+
+
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("buttons").style.display = "none";
+  
+  document.getElementById("myForm1").style.display = "block";
+ 
+ document.getElementById("eventbg").style.height="auto";
+}
+
+function closeForm1() {
+  document.getElementById("buttons").style.display = "block";
+  document.getElementById("myForm1").style.display = "none";
+   document.getElementById("eventbg").style.height="100%";
+ 
+}
+function eventRegister()
 {
-if (userRegistration())
+if (userRegistration('myform'))
 {
 var xmlHttpRequest=new XMLHttpRequest();
-var fc=document.getElementById("myform");
+var div=document.getElementById('myform');
+var fc=div.children[0];
 var name=fc.name.value;
 var contactNumber=fc.contactNumber.value;
 var collegeName=fc.collegeName.value;
@@ -47,8 +86,7 @@ To : 'xception@uecu.ac.in',
 From : "xception@uecu.ac.in",
 Subject : "REGISTRATION ALERT !!",
 Body : data,
-})
-.then(function(message){});
+}).then(function(message){});
 Email.send({
 Host: "smtp.gmail.com",
 Username : "xception@uecu.ac.in",
@@ -57,8 +95,7 @@ To : emailId,
 From : "xception@uecu.ac.in",
 Subject : "REGISTRATION ALERT !!",
 Body : "Dear "+name+",<br>You have successfully registered for following events : "+m+".<br><br>Thank You !!<br>Regards,<br>Team Xception.",
-})
-.then(function(message){});
+}).then(function(message){});
 fc.name.value="";
 fc.contactNumber.value="";
 fc.collegeName.value="";
@@ -75,12 +112,66 @@ if(fc.events[k].checked)
 fc.events[k].checked=false;
 }
 }
-document.getElementById("result").innerHTML="Registration Successful.";
+//document.getElementById("result").innerHTML="Registration Successful.";
+alert("Registration Successful \n Please contact to this number : 8719852436 to confirm your Registration.");
 }//if ends
 }// function ends
-function userRegistration()
+
+
+
+
+
+function register()
 {
-var fc=document.getElementById("myform");
+if (userRegistration('myForm1'))
+{
+var xmlHttpRequest=new XMLHttpRequest();
+var div=document.getElementById("myForm1");
+var fc=div.children[0];
+var name=fc.name.value;
+var contactNumber=fc.contactNumber.value;
+var collegeName=fc.collegeName.value;
+var city=fc.city.value;
+var  branch=fc.branch.value;
+var  currentYear=fc.currentYear.value;
+var gender=fc.gender.value;
+var emailId=fc.emailId.value;
+//var events=request.getParameterValues("events");
+ var m="Stand up Comedy by Parvinder Singh";
+var data= ("Name : "+name+", ContactNumber : "+contactNumber+", CollegeName : "+collegeName+", City : "+city+", Branch : "+branch+", CurrentYear : "+currentYear+", Gender : "+gender+", EmailId : "+emailId+", Event : "+m);
+Email.send({
+Host: "smtp.gmail.com",
+Username : "xception@uecu.ac.in",
+Password : "bqy5xams8a",
+To : 'xception@uecu.ac.in',
+From : "xception@uecu.ac.in",
+Subject : "REGISTRATION ALERT !!",
+Body : data,
+}).then(function(message){});
+Email.send({
+Host: "smtp.gmail.com",
+Username : "xception@uecu.ac.in",
+Password : "bqy5xams8a",
+To : emailId,
+From : "xception@uecu.ac.in",
+Subject : "REGISTRATION ALERT !!",
+Body : "Dear "+name+",<br>You have successfully registered for following event : "+m+".<br><br>Thank You !!<br>Regards,<br>Team Xception.",
+}).then(function(message){});
+fc.name.value="";
+fc.contactNumber.value="";
+fc.collegeName.value="";
+fc.city.value="";
+fc.branch.value="";
+fc.currentYear.value="";
+fc.gender.value="";
+fc.emailId.value="";
+//document.getElementById("result").innerHTML="Registration Successful.";
+ alert("Registration Successful \n Please contact to this number : 8719852436 to confirm your Registration.");
+}//if ends
+}// function ends
+function userRegistration(form_id)
+{
+var fc=document.getElementById(form_id).children[0];
 var name=fc.name.value;
 var contact=fc.contactNumber.value;
 var college=fc.collegeName.value;
@@ -106,6 +197,8 @@ document.getElementById("result").innerHTML="";
 document.getElementById("result").innerHTML="Please fill contact no. properly...";
 return false;
 }
+if(form_id!="myForm1")
+{
 var p=0;
 for(var k=0;k<fc.events.length;k++)
 {
@@ -119,6 +212,7 @@ if(p==0)
 document.getElementById("result").innerHTML="";
 document.getElementById("result").innerHTML="Please check any event.";
 return false;
+}
 }
 return true;
 }
@@ -156,12 +250,17 @@ return true;
 
   </div>
 
-<div class="eventsbg">
+<div class="eventsbg" id="eventbg">
   <div class="eventcontainer">
 
+<div id="buttons">
+<center><h1 style="color: white">Register</h1></center>
 
 
-
+<center><button class="open-button" onclick="openForm()">Events</button></center>
+<br>
+<center><button class="open-button" onclick="openForm1()"> Parvinder Singh's Stand Up Comedy</button></center>
+</div>
 
 
 
@@ -217,12 +316,70 @@ Technical Event :<br>
 <br>
 <br>
 <br>
-    <input type="button" class="btn" onclick="register()"  value="submit">
- 
+    <input type="button" class="btn" onclick="eventRegister()"  value="submit">
+ <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
+
+
+<div class="form-popup" id="myForm1">
+ <form id="myform1" class="form-container">
+    <h1 style="width: 90%;align-self: center;">Registration for Stand Up Comedy by Parvinder Singh</h1>
+       <label style="color:red"  id="result"></label>  
+       <br>
+     <label for="name"><b>Name</b></label>
+     <input type="text" id="name" name="name"  placeholder="Full Name" >
+              
+              <label for="email"><b>Email</b></label>
+                <input type="text" id="emailId" name="emailId"  placeholder="Your Email" >
+              <label for="city"><b>City</b></label>
+                <input type="text" id="city" name="city"  placeholder="city" >
+              <label for="college"><b>College</b></label>
+                <input type="text" id="collegeName" name="collegeName"  placeholder="College Name" >
+
+              <label for="branch" style="width:50%; float:left"><b>Branch</b></label>
+              <label for="year" style="width:49%;"><b>Year</b></label>
+                <input type="text" id="branch" name="branch"  placeholder="Branch" style="width:50%; float:left" >
+              
+                <input type="text" id="year" name="currentYear"  placeholder="Year" style="width:49%;" >
+
+             <label for="gender" style="width:30%; float:left" ><b>Gender</b></label>  
+            <label  style="width:30%; float:left"><b>
+             Male <input type="radio" id="male" name="gender" value="Male"  checked></b>
+             </label>
+             <label  style="width:30%; float:left"><b>
+             Female <input type="radio" id="female" name="gender" value="Female" style="width:30%; "></b>
+</label>
+          <br>
+          <br>
+          <br>
+              <label for="contact"><b>Contact</b></label>
+                <input type="text" id="contactNumber" name="contactNumber"  placeholder="Contact No." >
+<!-- add events -->
+
+
+<br>
+<br>
+<br>
+
+    <input type="button" class="btn" onclick="register()"  value="submit">
+    <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+  </form>
+</div>
+
+
+
 </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!--<div class="eventsbg1" id="eventsbg11">
 </div>
 -->
