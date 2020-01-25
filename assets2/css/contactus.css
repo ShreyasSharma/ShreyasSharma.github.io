@@ -164,8 +164,8 @@ body {
   margin: 10px;
   display: inline-block;
   position: relative;
-  width: 220px;
-  height: 260px;
+  width: 240px;
+  height: 310px;
   opacity: 0.85;
   
 }
@@ -193,6 +193,7 @@ body {
   /*background: linear-gradient(to bottom right, #fbd995, #fb736a);*/
   text-align: center;
   padding: 30px;
+  padding-top: 5px;
   background: #008080;
   border-style:solid;
   
@@ -222,10 +223,13 @@ body {
 }
 
 .front .contact {
-  height: 120px;
-  width: 120px;
+  height: 200px;
+  
+  margin-left: -10%;
+  width: 120%;
+  margin-right: -10%;
   border: 5px solid #B2DBBF;
-  border-radius: 50%;
+  border-radius: 20%;
   display: inline-block;
   margin-bottom: 10px;
 }
