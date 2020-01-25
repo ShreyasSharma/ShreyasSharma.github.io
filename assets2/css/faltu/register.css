@@ -19,7 +19,7 @@
 
 /* The popup form - hidden by default */
 .form-popup {
-  display: none;
+  display: block;
   margin-left: 30%;
   width: 40%;
   margin-right: 30%
@@ -51,7 +51,6 @@ margin-left: 20%;
   .eventsbg
   {
     background-image: url("../images/bgs/others/register2.png");
-     height: 100%;
   }
 }
 
@@ -79,7 +78,6 @@ margin-left: 10%;
 .eventsbg
   {
     background-image: url("../images/bgs/others/register2.png");
-     height: 100%;
   }
 }
 
@@ -103,7 +101,6 @@ margin-left: 5%;
   .eventsbg
   {
     background-image: url("../images/bgs/others/register2.png");
-     height: 100%;
   }
 }
 
@@ -160,13 +157,31 @@ margin-left: 5%;
 
 
 
-
-.eventsbg
-{
- background-image: url("../images/bgs/others/register2.jpg")  ;
+.eventsbg {
+  background-image: url("../images/bgs/others/register2.jpg")  ;
   /*background-attachment: fixed;*/
   background-position: center ;
   background-repeat: no-repeat ;
   background-size: cover ;
-height:100%;
+ 
+
+}
+
+@media screen and (max-aspect-ratio: 735/1000)
+{
+  
+
+.eventsbg1 {
+  display: block;
+  background-image: url("../images/bgs/others/register.jpg")  ;
+  /*background-attachment: fixed;*/
+  background-position: center ;
+  background-repeat: no-repeat ;
+  background-size: cover ;
+height: 500px;
+}
+@media (max-width:  490px)
+{
+
+  
 }
